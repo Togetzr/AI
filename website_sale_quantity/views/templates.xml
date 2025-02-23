@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="products_add_to_cart" inherit_id="website_sale.products_item">
+        <xpath expr="//div[hasclass('o_wsale_product_btn')]" position="inside">
+            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+            <input name="product_id" t-att-value="product_variant_id" type="hidden"/>
+            <t t-if="product_variant_id and template_price_vals['price_reduce'] or not website.prevent_zero_price_sale">
+                <div class="input-group quantity-input-group">
+                    <button type="button" class="btn btn-outline-secondary" onclick="decrementQuantity(this)">-</button>
+                    <input type="number" name="add_qty" value="1" min="1" class="form-control text-center" />
+                    <button type="button" class="btn btn-outline-secondary" onclick="incrementQuantity(this)">+</button>
+                </div>
+                <a t-if="product._website_show_quick_add()"
+                   href="#" role="button" class="btn btn-primary a-submit ms-2" aria-label="Shopping cart" title="Shopping cart">
+                    <span class="fa fa-shopping-cart"/>
+                </a>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/website_sale_quantity/static/src/js/quantity_buttons.js"></script>
+            <link rel="stylesheet" href="/website_sale_quantity/static/src/css/quantity_buttons.css"/>
+        </xpath>
+    </template>
+</odoo>

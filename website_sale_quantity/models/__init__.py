@@ -1,0 +1,1 @@
+# This file can be left empty, as we are not defining any new models.
