@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="modify_template" model="whatsapp.template">
+        <field name="name">Modify Booking</field>
+        <field name="mess_type">interactive</field>
+        <field name="template_name">modify_temp</field>
+        <field name="default_template" eval="True"/>
+        <field name="contact_exist" eval="False"/>
+        <field name="body">Bonjour,
+
+Modify Your Bookings
+        </field>
+    </record>
+    
+    <record id="cancel_booking_template" model="whatsapp.template">
+        <field name="name">Cancel Booking</field>
+        <field name="mess_type">interactive</field>
+        <field name="template_name">cancel_temp</field>
+        <field name="default_template" eval="True"/>
+        <field name="contact_exist" eval="False"/>
+        <field name="body">Bonjour,
+
+Cancel the booking
+        </field>
+    </record>
+    
+    <record id="normal_flow" model="whatsapp.flow">
+        <field name="name">Normal Booking</field>
+        <field name="is_resourse_flow" eval="True"/>
+        <field name="flow_type">normal_booking</field>
+        <field name="phone_field">partner_ids.phone</field>
+        <field name="button_name">Réserver</field>
+        <field name="screen_name">CUSTOMER_INFO</field>
+<!--        <field name="endpoint_uri">https://olr1.net/api/data?wa_token=watogetzr&amp;default_url=togetzr.com</field>-->
+        <field name="send_summery" eval="True"/>
+        <field name="categories">OTHER</field>
+        <field name="body">Bonjour,
+
+Si vous avez besoin de notre position GPS, veuillez saisir 👉 GPS 👈. Ecrirez 👉 Contact 👈 si vous souhaitez être rappeler.
+Prenez directement rendez-vous. Veuillez cliquer sur rendez-vous pour réserver votre rendez-vous. :
+        </field>
+    </record>
+    
+    <record id="normal_flow_with_gender" model="whatsapp.flow">
+        <field name="name">Normal Booking (Gender)</field>
+        <field name="is_resourse_flow" eval="True"/>
+        <field name="flow_type">normal_booking_gender</field>
+        <field name="phone_field">partner_ids.phone</field>
+        <field name="button_name">Réserver</field>
+        <field name="screen_name">CUSTOMER_INFO</field>
+<!--        <field name="endpoint_uri">https://olr1.net/api/data?wa_token=watogetzr&amp;default_url=togetzr.com</field>-->
+        <field name="send_summery" eval="True"/>
+        <field name="categories">OTHER</field>
+        <field name="body">Bonjour,
+
+Si vous avez besoin de notre position GPS, veuillez saisir 👉 GPS 👈. Ecrirez 👉 Contact 👈 si vous souhaitez être rappeler.
+Prenez directement rendez-vous. Veuillez cliquer sur rendez-vous pour réserver votre rendez-vous. :
+        </field>
+    </record>
+    
+    <record id="advance_flow" model="whatsapp.flow">
+        <field name="name">Advance Booking</field>
+        <field name="is_resourse_flow" eval="True"/>
+        <field name="flow_type">adv_booking</field>
+        <field name="phone_field">partner_ids.phone</field>
+        <field name="button_name">Réserver</field>
+        <field name="screen_name">CUSTOMER_INFO</field>
+<!--        <field name="endpoint_uri">https://olr1.net/api/data?wa_token=watogetzr&amp;default_url=togetzr.com</field>-->
+        <field name="send_summery" eval="True"/>
+        <field name="categories">OTHER</field>
+        <field name="body">Bonjour,
+
+Si vous avez besoin de notre position GPS, veuillez saisir 👉 GPS 👈. Ecrirez 👉 Contact 👈 si vous souhaitez être rappeler.
+Prenez directement rendez-vous. Veuillez cliquer sur rendez-vous pour réserver votre rendez-vous. :
+        </field>
+    </record>
+    
+    <record id="advance_flow_with_gender" model="whatsapp.flow">
+        <field name="name">Advance Booking (Gender)</field>
+        <field name="is_resourse_flow" eval="True"/>
+        <field name="flow_type">adv_booking_gender</field>
+        <field name="phone_field">partner_ids.phone</field>
+        <field name="button_name">Réserver</field>
+        <field name="screen_name">CUSTOMER_INFO</field>
+<!--        <field name="endpoint_uri">https://olr1.net/api/data?wa_token=watogetzr&amp;default_url=togetzr.com</field>-->
+        <field name="send_summery" eval="True"/>
+        <field name="categories">OTHER</field>
+        <field name="body">Bonjour,
+
+Si vous avez besoin de notre position GPS, veuillez saisir 👉 GPS 👈. Ecrirez 👉 Contact 👈 si vous souhaitez être rappeler.
+Prenez directement rendez-vous. Veuillez cliquer sur rendez-vous pour réserver votre rendez-vous. :
+        </field>
+    </record>
+    
+    <record id="modifier_flow" model="whatsapp.flow">
+        <field name="name">Modify Booking</field>
+        <field name="is_resourse_flow" eval="True"/>
+        <field name="flow_type">modifier</field>
+        <field name="phone_field">partner_ids.phone</field>
+        <field name="button_name">Modify</field>
+        <field name="screen_name">BOOKING_INFO</field>
+<!--        <field name="endpoint_uri">https://olr1.net/api/data?wa_token=watogetzr&amp;default_url=togetzr.com</field>-->
+        <field name="send_summery" eval="True"/>
+        <field name="categories">OTHER</field>
+        <field name="body">Bonjour,
+
+Modify your bookings
+        </field>
+    </record>
+    
+    <function model="whatsapp.flow" name="create_attachements_for_flow" eval="[[ref('advance_flow_with_gender')]]"/>
+    
+<!--    <function model="whatsapp.flow" name="sync_to_whatsapp_default" eval="[[ref('normal_flow')]]"/>-->
+<!--    <function model="whatsapp.flow" name="sync_to_whatsapp_default" eval="[[ref('normal_flow_with_gender')]]"/>-->
+<!--    <function model="whatsapp.flow" name="sync_to_whatsapp_default" eval="[[ref('advance_flow')]]"/>-->
+<!--    <function model="whatsapp.flow" name="sync_to_whatsapp_default" eval="[[ref('advance_flow_with_gender')]]"/>-->
+    
+</odoo>

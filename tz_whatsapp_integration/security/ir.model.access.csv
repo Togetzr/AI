@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_whatsapp,access.whatsapp,model_whatsapp,base.group_user,1,1,1,1
+access_whatsapp_template,access.whatsapp_template,model_whatsapp_template,group_whatsapp_manager,1,1,1,1
+access_whatsapp_flow,access.whatsapp_flow,model_whatsapp_flow,group_whatsapp_manager,1,1,1,1
+access_whatsapp_template_button,access.whatsapp_template_button,model_whatsapp_template_button,group_whatsapp_manager,1,1,1,1
+access_whatsapp_template_variable,access.whatsapp_template_variable,model_whatsapp_template_variable,group_whatsapp_manager,1,1,1,1
+access_whatsapp_trigger_message,access.whatsapp_trigger_message,model_whatsapp_trigger_message,group_whatsapp_manager,1,1,1,1
+access_whatsapp_preview,access.whatsapp_preview,model_whatsapp_preview,group_whatsapp_manager,1,1,1,1
+access_whatsapp_composer,access.whatsapp_composer,model_whatsapp_composer,base.group_user,1,1,1,1
+user_access_whatsapp_template,user_access.whatsapp_template,model_whatsapp_template,base.group_user,1,1,0,0
+user_access_whatsapp_template_button,user_access.whatsapp_template_button,model_whatsapp_template_button,base.group_user,1,1,0,0
+user_access_whatsapp_template_variable,user_access.whatsapp_template_variable,model_whatsapp_template_variable,base.group_user,1,1,0,0

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="res_company_commerce_inherit">
+        <field name="name">res.company.inherited</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button type="object" name="sync_catalogue_details" class="oe_highlight" string="Sync Catalogue Details"/>
+                    <button type="object" name="switch_whatsapp_commerce_catalogue" class="oe_highlight" string="Enable Catalogue" invisible="whatsapp_commerce_catalogue_enable"/>
+                    <button type="object" name="switch_whatsapp_commerce_catalogue" string="Disable Catalogue" invisible="not whatsapp_commerce_catalogue_enable"/>
+                    <button type="object" name="switch_commerce_cart_enable" class="oe_highlight" string="Enable Cart" invisible="whatsapp_commerce_cart_enable"/>
+                    <button type="object" name="switch_commerce_cart_enable" string="Disable Cart" invisible="not whatsapp_commerce_cart_enable"/>
+                </header>
+            </xpath>
+            
+            <xpath expr="//notebook" position="inside">
+                <page name="whatsapp_commerce" string="Whatsapp Commerce">
+                    <group>
+                        <field name="whatsapp_catalogue_id"/>
+                        <field name='whatsapp_product_catalogue_id'/>
+                        <field name="whatsapp_commerce_catalogue_enable" readonly="1"/>
+                        <field name="whatsapp_commerce_cart_enable" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

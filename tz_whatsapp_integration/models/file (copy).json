@@ -1,0 +1,386 @@
+{
+  "version": "3.1",
+  "screens": [
+    {
+      "id": "QUESTION_ONE",
+      "title": "Information",
+      "data": {},
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "flow_path",
+            "children": [
+              {
+                "type": "Dropdown",
+                "label": "Male",
+                "required": true,
+                "name": "Dropdown_fd45c7",
+                "data-source": [
+                  {
+                    "id": "0_Option_1",
+                    "title": "Option 1"
+                  },
+                  {
+                    "id": "1_Option_2",
+                    "title": "Option 2"
+                  }
+                ]
+              },
+              {
+                "type": "Dropdown",
+                "label": "Hair Cut",
+                "required": true,
+                "name": "Dropdown_521f0a",
+                "data-source": [
+                  {
+                    "id": "0_Option_1",
+                    "title": "Option 1"
+                  },
+                  {
+                    "id": "1_Option_2",
+                    "title": "Option 2"
+                  },
+                  {
+                    "id": "2_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "3_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "4_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "5_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "6_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "7_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "8_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "9_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "10_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "11_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "12_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "13_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "14_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "15_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "16_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "17_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "18_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "19_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "20_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "21_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "22_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "23_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "24_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "25_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "26_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "27_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "28_Option",
+                    "title": "Option"
+                  },
+                  {
+                    "id": "29_Option",
+                    "title": "Option"
+                  }
+                ]
+              },
+              {
+                "type": "Dropdown",
+                "label": "Label",
+                "required": true,
+                "name": "Dropdown_ae1746",
+                "data-source": [
+                  {
+                    "id": "0_Option_1",
+                    "title": "Option 1"
+                  },
+                  {
+                    "id": "1_Option_2",
+                    "title": "Option 2"
+                  }
+                ]
+              },
+              {
+                "type": "Dropdown",
+                "label": "Label",
+                "required": true,
+                "name": "Dropdown_445149",
+                "data-source": [
+                  {
+                    "id": "0_Option_1",
+                    "title": "Option 1"
+                  },
+                  {
+                    "id": "1_Option_2",
+                    "title": "Option 2"
+                  }
+                ]
+              },
+              {
+                "type": "Dropdown",
+                "label": "Label",
+                "required": true,
+                "name": "Dropdown_1ceb73",
+                "data-source": [
+                  {
+                    "id": "0_Option_1",
+                    "title": "Option 1"
+                  },
+                  {
+                    "id": "1_Option_2",
+                    "title": "Option 2"
+                  }
+                ]
+              },
+              {
+                "type": "Dropdown",
+                "label": "Label",
+                "required": true,
+                "name": "Dropdown_09e1f7",
+                "data-source": [
+                  {
+                    "id": "0_Option_1",
+                    "title": "Option 1"
+                  },
+                  {
+                    "id": "1_Option_2",
+                    "title": "Option 2"
+                  }
+                ]
+              },
+              {
+                "type": "Footer",
+                "label": "Continue",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "screen_znsmhq"
+                  },
+                  "payload": {
+                    "screen_0_Dropdown_0": "${form.Dropdown_fd45c7}",
+                    "screen_0_Dropdown_1": "${form.Dropdown_521f0a}",
+                    "screen_0_Dropdown_2": "${form.Dropdown_ae1746}",
+                    "screen_0_Dropdown_3": "${form.Dropdown_445149}",
+                    "screen_0_Dropdown_4": "${form.Dropdown_1ceb73}",
+                    "screen_0_Dropdown_5": "${form.Dropdown_09e1f7}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen_znsmhq",
+      "title": "Male",
+      "data": {
+        "screen_0_Dropdown_0": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_1": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_2": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_3": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_4": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_5": {
+          "type": "string",
+          "__example__": "Example"
+        }
+      },
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "flow_path",
+            "children": [
+              {
+                "type": "TextInput",
+                "name": "TextInput_b38c15",
+                "label": "Label",
+                "required": true,
+                "input-type": "text"
+              },
+              {
+                "type": "Footer",
+                "label": "Continue",
+                "on-click-action": {
+                  "name": "navigate",
+                  "next": {
+                    "type": "screen",
+                    "name": "screen_mqxlzk"
+                  },
+                  "payload": {
+                    "screen_1_TextInput_0": "${form.TextInput_b38c15}",
+                    "screen_0_Dropdown_0": "${data.screen_0_Dropdown_0}",
+                    "screen_0_Dropdown_1": "${data.screen_0_Dropdown_1}",
+                    "screen_0_Dropdown_2": "${data.screen_0_Dropdown_2}",
+                    "screen_0_Dropdown_3": "${data.screen_0_Dropdown_3}",
+                    "screen_0_Dropdown_4": "${data.screen_0_Dropdown_4}",
+                    "screen_0_Dropdown_5": "${data.screen_0_Dropdown_5}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "screen_mqxlzk",
+      "title": "Female",
+      "data": {
+        "screen_1_TextInput_0": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_0": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_1": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_2": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_3": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_4": {
+          "type": "string",
+          "__example__": "Example"
+        },
+        "screen_0_Dropdown_5": {
+          "type": "string",
+          "__example__": "Example"
+        }
+      },
+      "terminal": true,
+      "layout": {
+        "type": "SingleColumnLayout",
+        "children": [
+          {
+            "type": "Form",
+            "name": "flow_path",
+            "children": [
+              {
+                "type": "TextInput",
+                "name": "TextInput_b9daef",
+                "label": "Label",
+                "required": true,
+                "input-type": "text"
+              },
+              {
+                "type": "Footer",
+                "label": "Continue",
+                "on-click-action": {
+                  "name": "complete",
+                  "payload": {
+                    "screen_2_TextInput_0": "${form.TextInput_b9daef}",
+                    "screen_1_TextInput_0": "${data.screen_1_TextInput_0}",
+                    "screen_0_Dropdown_0": "${data.screen_0_Dropdown_0}",
+                    "screen_0_Dropdown_1": "${data.screen_0_Dropdown_1}",
+                    "screen_0_Dropdown_2": "${data.screen_0_Dropdown_2}",
+                    "screen_0_Dropdown_3": "${data.screen_0_Dropdown_3}",
+                    "screen_0_Dropdown_4": "${data.screen_0_Dropdown_4}",
+                    "screen_0_Dropdown_5": "${data.screen_0_Dropdown_5}"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

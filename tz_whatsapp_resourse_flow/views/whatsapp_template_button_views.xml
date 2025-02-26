@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="whatsapp_template_button_view_form_inherit" model="ir.ui.view">
+        <field name="name">whatsapp.flow.view.form.inherit</field>
+        <field name="model">whatsapp.flow</field>
+        <field name="inherit_id" ref="tz_whatsapp_integration.whatsapp_template_button_view_form"/>
+        <field name="arch" type="xml">
+            <field name="wa_template_id" position="after">
+                <field name="send_default_company_flow"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

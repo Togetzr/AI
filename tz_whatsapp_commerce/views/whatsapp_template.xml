@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="whatsapp_template_view_form">
+        <field name="name">whatsapp_template_view_form</field>
+        <field name="model">whatsapp.template</field>
+        <field name="inherit_id" ref="tz_whatsapp_integration.whatsapp_template_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="send_category_to_number" string="Send category message" type="object" invisible="not product_category_send or not testing_category_number"/>
+            </xpath>
+            <field name="allowed_user_ids" position="after">
+                <field name="order_confirmation_template"/>
+                <field name="product_category_send"/>
+                <field name="testing_category_number"/>
+            </field>
+        </field>
+    </record>
+</odoo>

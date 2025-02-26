@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="tz_whatsapp_integration.template_wa_onboard" owl="1">
+        
+        <iframe t-att-src="this.state.infos" title="W3Schools Free Online Web Tutorials" style="height: 500px;width:100%;"/>
+<!--        http://localhost:8069/wa_onboarding?{{this.state.infos}}-->
+<!--        <div class="container-fluid p-4 overflow-y-scroll h-100">-->
+<!--            <div class="row">-->
+<!--                <script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_US/all.js" type="text/javascript"></script>-->
+
+<!--                <button type="action" t-on-click="launchWhatsAppSignup" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button>-->
+<!--            -->
+<!--            -->
+<!--            </div>-->
+<!--        </div>-->
+    </t>
+
+</templates>

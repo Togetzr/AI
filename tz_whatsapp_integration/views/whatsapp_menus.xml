@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem name="WhatsApp"
+        id="whatsapp_main_menu"
+        sequence="260" groups="tz_whatsapp_integration.group_whatsapp_manager"/>
+
+    <menuitem name="Templates"
+        id="whatsapp_menu_template"
+        parent="whatsapp_main_menu"
+        sequence="0"
+        action="whatsapp_template_action"
+        />
+    
+    <menuitem name="Flows"
+        id="whatsapp_menu_flow"
+        parent="whatsapp_main_menu"
+        sequence="10"
+        action="whatsapp_flow_action"
+        />
+        
+    <menuitem name="Trigger Messages"
+        id="whatsapp_menu_trigger_message"
+        parent="whatsapp_main_menu"
+        sequence="20"
+        action="whatsapp_trigger_message_action"
+        />
+
+</odoo>
