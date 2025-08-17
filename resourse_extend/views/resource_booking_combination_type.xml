@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Tecnativa - Jairo Llopis
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<data>
+    <!-- Views -->
+    <record id="resource_booking_combination_type_tree" model="ir.ui.view">
+        <field name="name">Resource booking combination type tree</field>
+        <field name="model">resource.booking.combination.type</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+    <!-- Actions -->
+    <record id="resource_booking_combination_type_action" model="ir.actions.act_window">
+        <field name="name">Combination Type</field>
+        <field name="res_model">resource.booking.combination.type</field>
+        <field name="view_mode">tree</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Define resource bookings Combination Type.
+            </p>
+        </field>
+    </record>
+</data>

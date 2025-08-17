@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="product_template_form_view">
+        <field name="name">product_template_form_view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button type="object" name="sync_whatsapp_data" class="oe_highlight" string="Sync with WhatsApp" invisible="whatsapp_product_id"/>
+                <button type='object' name="update_whatsapp_data" class="oe_highlight" string="Update on Whatsapp" invisible="not whatsapp_product_id"/>
+<!--                <button type="object" name="check_batch_api" class="oe_highlight" string="Check batch api" invisible="not whatsapp_product_id"/>-->
+            </xpath>
+            <field name="description_sale" position="after">
+                <field name="whatsapp_product_id"/>
+            </field>
+            <xpath expr="//div[field[@name='allow_out_of_stock_order']]" position="after">
+                <field name="forecast_quantity_available" widget="boolean_toggle"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Tecnativa - Jairo Llopis
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Views -->
+    <record id="resource_booking_type_view_form_inherit" model="ir.ui.view">
+        <field name="name">Resource booking type form</field>
+        <field name="model">resource.booking.type</field>
+        <field name="inherit_id" ref="resource_booking.resource_booking_type_view_form"/>
+        <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <field name="product_id"/>
+                <field name="price"/>
+                <field name="currency_id" invisible="1"/>
+            </field>
+        </field>
+    </record>
+</odoo>

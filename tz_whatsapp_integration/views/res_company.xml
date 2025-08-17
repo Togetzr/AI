@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_setting_whatsapp_onboard" model="ir.actions.client">
+        <field name="name">Whatsapp Onboard</field>
+        <field name="tag">whatsapp_onboard</field>
+        <field name="target">new</field>
+    </record>
+
+    <record model="ir.ui.view" id="res_company_inherit">
+        <field name="name">res.company.inherited</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button name="fake_resoursebutton" type="object" string="Fake button"/>
+                    <button type="object" name="set_public_key" string="Set Public Key"/>
+                    <button type="object" name="get_public_key" string="Get Public Key"/>
+                    <button type="object" name="whatsapp_onboard" string="Onboard Whatsapp" invisible="wa_phonenumber_id"/>
+                </header>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="whatsapp" string="Whatsapp">
+                    <group>
+                        <field name="app_uid" invisible="1"/>
+                        <field name="fb_api_version" invisible="1"/>
+                        <field name="fb_configuration_id" invisible="1"/>
+                        <field name="wa_access_token" invisible="1"/>
+                        <field name="waba_id" invisible="1"/>
+                        <field name="wa_phonenumber_id" invisible="1"/>
+<!--                        <field name="platform_domain"/>-->
+<!--                        <field name="data_uri_domain"/>-->
+<!--                        <field name="webhook_verify_token"/>-->
+                        <field name="whatsapp_user"/>
+<!--                        <field name="whatsapp_catalogue_id"/>-->
+<!--                        <field name="whatsapp_commerce_catalogue_enable" readonly="1"/>-->
+<!--                        <field name="whatsapp_commerce_cart_enable" readonly="1"/>-->
+                        <field name="public_key_attachment"/>
+                        <field name="private_key_attachment"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

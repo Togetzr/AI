@@ -1,0 +1,45 @@
+<odoo>
+<record id="model_resource_booking" model="ir.model">
+    <field name="name">resource.booking</field> <!-- Add this -->
+    <field name="model">x_resource_booking</field> <!-- Add this -->
+    <field name="website_form_key">create_reservation</field>
+    <field name="website_form_label">Create Reservation</field>
+    <field name="website_form_access">True</field>
+    <field name="website_form_default_field_id" ref="resource_booking.model_resource_booking"/>
+</record>
+
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+        <value>resource.booking</value>
+        <value eval="[
+            'name',
+            'start',
+            'stop',
+            'description',
+            'partner_ids',
+        ]"/>
+    </function>
+
+<!-- templates.xml -->
+<!--    <template id="contactus_with_calendar" name="Contact with Calendar" inherit_id="website.contactus">-->
+<!--        <xpath expr="//form" position="after">-->
+<!--            <t t-if="booking">-->
+<!--                <t t-call="resource_booking.scheduling_calendar">-->
+<!--                    <t t-set="booking" t-value="booking"/>-->
+<!--                </t>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+    <!-- File: views/contactus_custom.xml -->
+<template id="contactus_with_calendar" name="Contactus Calendar Page">
+    <t t-call="website.layout">
+        <div class="container mt-5">
+            <h2 class="text-center">Thank you for your request</h2>
+            <t t-call="resource_booking.scheduling_calendar">
+                <t t-set="booking" t-value="booking" />
+            </t>
+        </div>
+    </t>
+</template>
+
+</odoo>

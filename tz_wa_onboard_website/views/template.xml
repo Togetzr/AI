@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- /shop product listing -->
+    <template id="waonboard" name="Whatsapp Onboard">
+        <t t-call="website.layout">
+            <t t-set="no_header" t-value="1"/>
+            <t t-set="no_footer" t-value="1"/>
+            <div id="wrap " class="waonboard">
+            
+                <div class="container-fluid p-4">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-center">
+                            <img t-att-src="'data:image/png;base64,%s' % (website.company_id.logo and website.company_id.logo.decode())" alt="Company Logo" class="img img-fluid" loading="lazy" style="height: 8.75rem;"/>
+                        </div>
+                        <script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_US/all.js" type="text/javascript"></script>
+
+                    <script type="text/javascript">
+        <!--                window.fbAsyncInit = function() {-->
+        <!--                    window.FB.init({-->
+        <!--                      appId: "<t t-esc="this.state.infos.app_id"/>",-->
+        <!--                      autoLogAppEvents: true,-->
+        <!--                      xfbml: true,-->
+        <!--                      version: "<t t-esc="this.state.infos.api_version"/>"-->
+        <!--                    });-->
+        <!--                  };-->
+                    </script>
+        <!--              window.fbAsyncInit = function() {-->
+        <!--                FB.init({-->
+        <!--                  appId: '<t t-esc="this.state.infos.app_id"/>',-->
+        <!--                  autoLogAppEvents: true,-->
+        <!--                  xfbml: true,-->
+        <!--                  version: <t t-esc="this.state.infos.api_version"/>-->
+        <!--                });-->
+        <!--              };-->
+        <!--              -->
+        <!--              window.addEventListener('message', (event) => {-->
+        <!--                if (event.origin !== "https://www.facebook.com" &amp;&amp; event.origin !== "https://web.facebook.com") return;-->
+        <!--                try {-->
+        <!--                  const data = JSON.parse(event.data);-->
+        <!--                  if (data.type === 'WA_EMBEDDED_SIGNUP') {-->
+        <!--                    console.log('message event: ', data);-->
+        <!--                  }-->
+        <!--                } catch {-->
+        <!--                  console.log('message event: ', event.data);-->
+        <!--                }-->
+        <!--              });-->
+        <!--              -->
+        <!--              const fbLoginCallback = (response) => {-->
+        <!--                if (response.authResponse) {-->
+        <!--                  const code = response.authResponse.code;-->
+        <!--                  console.log('response: ', code);-->
+        <!--                } else {-->
+        <!--                  console.log('response: ', response);-->
+        <!--                }-->
+        <!--              };-->
+        <!--              -->
+        <!--              const launchWhatsAppSignup = () => {-->
+        <!--                FB.login(fbLoginCallback, {-->
+        <!--                  config_id: '<t t-esc="this.state.infos.FBconfiguration_id"/>',-->
+        <!--                  response_type: 'code',-->
+        <!--                  override_default_response_type: true,-->
+        <!--                  extras: {-->
+        <!--                    setup: {},-->
+        <!--                    featureType: '',-->
+        <!--                    sessionInfoVersion: '3',-->
+        <!--                  }-->
+        <!--                });-->
+        <!--              };-->
+        <!--            </script>-->
+
+                    <!-- Launch button  -->
+        <!--            <button onclick="launchWhatsAppSignup" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button>-->
+                    <div class="col-12 d-flex justify-content-center">
+                        <a role="button" href="#" class="a-submit a-submit-disable a-submit-loading btn btn-primary w-100 w-md-auto order-1 order-md-3">Log in with Facebook</a>
+                    </div>
+<!--                        <button type="action" t-on-click="launchWhatsAppSignup" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button>-->
+                    
+                    
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

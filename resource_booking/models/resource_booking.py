@@ -12,8 +12,8 @@ from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
 from odoo.addons.resource.models.utils import Intervals
-
-
+import logging
+_logger = logging.getLogger(__name__)
 def _merge_intervals(intervals):
     # Merge intervals where start of current interval == stop of previous interval,
     # assuming that the intervals are ordererd.
@@ -41,8 +41,10 @@ def _merge_intervals(intervals):
 
 def _availability_is_fitting(available_intervals, start_dt, stop_dt):
     available_intervals = _merge_intervals(available_intervals)
+
     for item in available_intervals._items:
         available_start, available_stop = item[0], item[1]
+
         if start_dt >= available_start and stop_dt <= available_stop:
             return True
     return False
@@ -141,6 +143,7 @@ class ResourceBooking(models.Model):
         comodel_name="resource.booking.combination",
         string="Resources combination",
         compute="_compute_combination_id",
+        inverse="_inverse_combination_id",  # <-- add this
         copy=False,
         domain="[('type_rel_ids.type_id', 'in', [type_id])]",
         index=True,
@@ -304,7 +307,13 @@ class ResourceBooking(models.Model):
         """Select best combination candidate when changing booking dates."""
         # Useless without the interval
         for one in self.filtered(lambda x: x.start and x.combination_auto_assign):
+#            _logger.info("--working-%s"%one._get_best_combination())
             one.combination_id = one._get_best_combination()
+
+    def _inverse_combination_id(self):
+        # Nothing to do here because the user manually changed the field,
+        # but this method must exist to allow manual input
+        pass
 
     @api.depends("start")
     def _compute_is_overdue(self):
@@ -487,10 +496,14 @@ class ResourceBooking(models.Model):
         has_meeting = self.filtered("meeting_id")
         if not has_meeting:
             return
+
         # Ensure all scheduled bookings have booked some resources
         has_rbc = self.with_context(active_test=False).filtered(
             "combination_id.resource_ids"
         )
+        _logger.info("---has_meeting---%s"%has_meeting)
+        _logger.info("--has_rbc--%s-------%s----------%s"%(has_rbc,has_rbc.mapped('combination_id'),has_rbc.mapped('combination_id').mapped('resource_ids')))
+
         missing_rbc = has_meeting - has_rbc
         if missing_rbc:
             raise ValidationError(
@@ -648,6 +661,7 @@ class ResourceBooking(models.Model):
             )[False]
         else:
             result = Intervals([])
+#        _logger.info("-11-result--%s"%result._items)
         # Restrict with the chosen combination, or to at least one of the
         # available ones
         combinations = (
@@ -655,7 +669,9 @@ class ResourceBooking(models.Model):
             or booking.combination_id
             or booking.mapped("type_id.combination_rel_ids.combination_id")
         ).with_context(analyzing_booking=booking_id)
+#        _logger.info("-11-cobinations--%s"%combinations)
         result &= combinations._get_intervals(start_dt, end_dt)
+#        _logger.info("-22-result--%s"%result._items)
         return result
 
     def _sync_booking_activities_date(self):

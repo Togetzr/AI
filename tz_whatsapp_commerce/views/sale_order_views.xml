@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <record id="view_quotation_tree_with_onboarding_inherited" model="ir.ui.view">
+        <field name="name">sale.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="has_unavailable_product" column_invisible="True"/>
+            </xpath>
+            <!--            <xpath expr="//tree" position="attributes">-->
+            <!--                <attribute name="decoration-danger">has_unavailable_product</attribute>-->
+            <!--            </xpath>-->
+        </field>
+    </record>
+
+    <record id="view_order_form_inherited" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                <field name="product_unavailable" column_invisible="True"/>
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="before">
+                <field name="forecast_quantity"/>
+            </xpath>
+            <!--            <xpath expr="//field[@name='order_line']/tree" position="attributes">-->
+            <!--                <attribute name="decoration-danger">product_unavailable</attribute>-->
+            <!--            </xpath>-->
+        </field>
+    </record>
+
+</odoo>

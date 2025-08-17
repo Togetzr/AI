@@ -4,7 +4,8 @@
 from odoo import _, api, fields, models
 
 from odoo.addons.resource.models.utils import Intervals
-
+import logging
+_logger = logging.getLogger(__name__)
 
 class ResourceBookingCombination(models.Model):
     _name = "resource.booking.combination"

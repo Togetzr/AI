@@ -155,7 +155,6 @@
                                 <field
                                     name="combination_id"
                                     class="oe_inline"
-                                    invisible="not combination_auto_assign"
                                     readonly="combination_auto_assign"
                                 />
                             </div>

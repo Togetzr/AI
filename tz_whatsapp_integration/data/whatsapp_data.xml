@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="first_template" model="whatsapp.template">
+        <field name="name">Send Template</field>
+        <field name="mess_type">interactive</field>
+        <field name="template_name">send_temp</field>
+        <field name="default_template" eval="True"/>
+        <field name="contact_exist" eval="False"/>
+        <field name="body">Bonjour,
+
+Si vous avez besoin de notre position GPS, veuillez saisir 👉 GPS 👈. Ecrirez 👉 Contact 👈 si vous souhaitez être rappeler.
+Prenez directement rendez-vous. Veuillez cliquer sur rendez-vous pour réserver votre rendez-vous. :
+        </field>
+    </record>
+    
+</odoo>
