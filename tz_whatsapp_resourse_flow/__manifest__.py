@@ -27,10 +27,7 @@
     'website': "https://itieit.com",
     'company': 'ITIEIT',
     'maintainer': 'Mayur Nagar',
-    'depends': [
-        'tz_whatsapp_integration',
-                'resourse_extend'
-    ],
+    'depends': ['tz_whatsapp_integration','resourse_extend'],
     'data': [
         "data/flow_data.xml",
         "views/whatsapp_flow.xml",

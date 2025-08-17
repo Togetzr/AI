@@ -3,14 +3,6 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <!-- Views -->
-    <record id="resource_booking_type_from_calendar" model="resource.booking.type">
-        <field name="name">Created from the Odoo Calendar</field>
-    </record>
-    <record id="resource_booking_combination_calendar_default" model="resource.booking.combination">
-        <field name="name">Default Calendar Combination</field>
-    </record>
-
-
     <record id="resource_booking_type_view_form" model="ir.ui.view">
         <field name="name">Resource booking type form</field>
         <field name="model">resource.booking.type</field>

@@ -7,12 +7,7 @@ from pytz import UTC
 from odoo import api, fields, models
 
 from odoo.addons.resource.models.utils import Intervals
-from collections import defaultdict
-from pytz import timezone, utc
-from odoo.addons.resource.models.utils import Intervals, float_to_time, make_aware, datetime_to_string, string_to_datetime, ROUNDING_FACTOR
 
-import logging
-_logger = logging.getLogger(__name__)
 
 class Busy(Exception):
     pass  # This is not a real exception, just a helper
@@ -20,7 +15,7 @@ class Busy(Exception):
 
 class ResourceCalendar(models.Model):
     _inherit = "resource.calendar"
-    
+
     @api.constrains("attendance_ids", "global_leave_ids", "leave_ids", "tz")
     def _check_bookings_scheduling(self):
         """Scheduled bookings must have no conflicts."""
@@ -67,7 +62,6 @@ class ResourceCalendar(models.Model):
         all_events = (
             self.env["calendar.event"].with_context(active_test=True).search(domain)
         )
-
         for event in all_events:
             # Is the event the same one we're currently checking?
             if event.resource_booking_ids.id == analyzed_booking_id:

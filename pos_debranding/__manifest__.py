@@ -8,7 +8,7 @@
     "category": "Debranding",
     "support": "help@itpp.dev",
     "website": "https://odoo-debranding.com",
-    "depends": ["point_of_sale",],
+    "depends": ["point_of_sale","pos_vivawallet_isv",],
     "assets": {
         "point_of_sale.assets_prod": [
             "pos_debranding/static/src/xml/pos_debranding.xml",

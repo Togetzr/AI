@@ -39,94 +39,27 @@ class CalendarEvent(models.Model):
     def unlink(self):
         """Check you're allowed to unschedule it."""
         self._validate_booking_modifications()
-
-        # updated the new code for timeoff
-        leave_model = self.env['resource.calendar.leaves']
-        for event in self:
-            leave = leave_model.search([
-                ('date_from', '=', event.start),
-                ('date_to', '=', event.stop),
-                ('name', '=', event.name),
-            ])
-            if leave:
-                leave.unlink()
-
         return super().unlink()
 
     def write(self, vals):
         """Check you're allowed to reschedule it."""
         before = [(one.start, one.stop) for one in self]
-
-        # updated the new code for timeoff
-        # Update or create calendar leaves
-        for event in self:
-            resource = self.env['resource.resource'].search(
-                [('user_id', '=', event.user_id.id)], limit=1
-            )
-            if resource and event.start and event.stop:
-                leave = self.env['resource.calendar.leaves'].search([
-                    ('resource_id', '=', resource.id),
-                    ('date_from', '=', event.start),
-                    ('date_to', '=', event.stop),
-                    ('name', '=', event.name),
-                ], limit=1)
-
-                if leave:
-                    leave.write({
-                        'date_from': vals.get('start', event.start),
-                        'date_to': vals.get('stop', event.stop),
-                        'name': vals.get('name', event.name),
-                    })
-                else:
-                    self.env['resource.calendar.leaves'].create({
-                        'name': event.name or 'Calendar Event',
-                        'resource_id': resource.id,
-                        'calendar_id': resource.calendar_id.id,
-                        'date_from': event.start,
-                        'date_to': event.stop,
-                        'time_type': 'leave',
-                    })
-
         result = super().write(vals)
         rescheduled = self
         for (old_start, old_stop), new in zip(before, self):
             if old_start == new.start and old_stop == new.stop:
                 rescheduled -= new
         rescheduled._validate_booking_modifications()
-
-        # 🔁 Sync updates to linked resource.booking records
-        # for event in self:
-        #     for booking in event.resource_booking_ids:
-        #         vals_to_write = {}
-        #         if "start" in vals:
-        #             vals_to_write["start"] = event.start
-        #         if "stop" in vals:
-        #             vals_to_write["duration"] = (
-        #                 (event.stop - event.start).total_seconds() / 3600
-        #                 if event.start and event.stop
-        #                 else booking.duration
-        #             )
-        #         if "name" in vals:
-        #             vals_to_write["name"] = event.name
-        #         if "user_id" in vals:
-        #             vals_to_write["user_id"] = event.user_id.id
-        #         if "partner_ids" in vals:
-        #             vals_to_write["partner_ids"] = [(6, 0, event.partner_ids.ids)]
-        #
-        #         if vals_to_write:
-        #             booking.write(vals_to_write)
-
         return result
 
     def _notify_thread(self, message, msg_vals=False, **kwargs):
-        """
-            If we are creating the calendar event from the resource booking
-            (detected from the resource_booking_event context key), we need to
-            inject the standard mail context `mail_notify_author` to super to get
-            the own author notified when someone books a reservation, but only
-            in the case that the mail is being sent to them, as if not the author
-            may receive one copy per each of the attendees. This happens only when
-            the the subtype not is enabled by default in the instance.
+        """If we are creating the calendar event from the resource booking
+        (detected from the resource_booking_event context key), we need to
+        inject the standard mail context `mail_notify_author` to super to get
+        the own author notified when someone books a reservation, but only
+        in the case that the mail is being sent to them, as if not the author
+        may receive one copy per each of the attendees. This happens only when
+        the the subtype not is enabled by default in the instance.
         """
         if self.env.context.get("resource_booking_event") and msg_vals.get(
             "author_id"
@@ -179,43 +112,6 @@ class CalendarEvent(models.Model):
             else:
                 vals_list2.append(vals)
         records += super().create(vals_list2)
-
-
-        # updated the new code for timeoff
-        # Create calendar leaves
-        for event in records:
-            resource = self.env['resource.resource'].search(
-                [('user_id', '=', event.user_id.id)], limit=1
-            )
-            if resource and event.start and event.stop:
-                self.env['resource.calendar.leaves'].create({
-                    'name': event.name or 'Calendar Event',
-                    'resource_id': resource.id,
-                    'calendar_id': resource.calendar_id.id,
-                    'date_from': event.start,
-                    'date_to': event.stop,
-                    'time_type': 'leave',
-                })
-
-        # default_type = self.env.ref("resource_booking.resource_booking_type_from_calendar", raise_if_not_found=False)
-        # default_combination = self.env.ref("resource_booking.resource_booking_combination_calendar_default",                                 raise_if_not_found=False)
-        # type_id = default_type.id if default_type else False
-        # for event in records:
-        #     if not event.resource_booking_ids:
-        #         self.env["resource.booking"].create({
-        #             "meeting_id": event.id,
-        #             "start": event.start,
-        #             "duration": (
-        #                 (event.stop - event.start).total_seconds() / 3600
-        #                 if event.start and event.stop else 1.0
-        #             ),
-        #             "name": event.name or "/",
-        #             "partner_ids": [(6, 0, event.partner_ids.ids)],
-        #             "user_id": event.user_id.id,
-        #             "combination_auto_assign": True,
-        #             "type_id": type_id,
-        #             "combination_id": default_combination.id if default_combination else False,
-        #         })
         return records
 
     def get_interval(self, interval, tz=None):

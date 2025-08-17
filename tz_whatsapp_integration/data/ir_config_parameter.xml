@@ -3,7 +3,7 @@
 
     <record id="default_main_server" model="ir.config_parameter">
         <field name="key">saas.default_main_server</field>
-        <field name="value">https://taeppa.com</field>
+        <field name="value">https://togetzr.com</field>
     </record>
     
     <record id="default_wa_app_version" model="ir.config_parameter">
